@@ -11,7 +11,7 @@ def save_upload(file, suffix):
     file.save(temp.name)
     return temp.name
 
-@api_routes.route(f"{settings.API_V1_STR}/extract/standard", methods=['POST'])
+@api_routes.route("/extract/standard", methods=['POST'])
 def extract_standard():
     if 'file' not in request.files: return jsonify({"error": "No file"}), 400
     file = request.files['file']
@@ -25,7 +25,7 @@ def extract_standard():
     finally:
         if os.path.exists(temp_path): os.unlink(temp_path)
 
-@api_routes.route(f"{settings.API_V1_STR}/extract/ocr", methods=['POST'])
+@api_routes.route("/extract/ocr", methods=['POST'])
 def extract_ocr():
     if 'file' not in request.files: return jsonify({"error": "No file"}), 400
     file = request.files['file']
@@ -41,7 +41,7 @@ def extract_ocr():
     finally:
         if os.path.exists(temp_path): os.unlink(temp_path)
 
-@api_routes.route(f"{settings.API_V1_STR}/extract/columns", methods=['POST'])
+@api_routes.route("/extract/columns", methods=['POST'])
 def extract_columns():
     if 'file' not in request.files: return jsonify({"error": "No file"}), 400
     file = request.files['file']
@@ -59,7 +59,7 @@ def extract_columns():
     finally:
         if os.path.exists(temp_path): os.unlink(temp_path)
 
-@api_routes.route(f"{settings.API_V1_STR}/extract/xls", methods=['POST'])
+@api_routes.route("/extract/xls", methods=['POST'])
 def extract_excel():
     if 'file' not in request.files: return jsonify({"error": "No file"}), 400
     file = request.files['file']
